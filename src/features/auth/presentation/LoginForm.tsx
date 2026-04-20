@@ -65,8 +65,8 @@ export function LoginForm() {
             <button
               type="submit"
               disabled={isDisabled}
-              className={`font-rns w-full rounded-[5px] px-6 py-2.5 text-center font-bold text-white transition-all duration-200 ${
-                isDisabled ? 'cursor-not-allowed bg-gray-400 opacity-80' : 'primary-color-500 hover:bg-[#2570EB]'
+              className={`font-rns w-full rounded-[5px] px-6 py-2.5 text-center font-bold text-black shadow-xl transition-all duration-200 ${
+                isDisabled ? 'cursor-not-allowed bg-gray-400 opacity-80' : 'primary-color-500 hover:primary-color-400'
               } `}
             >
               {isRedirecting ? 'Accediendo...' : isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión'}
