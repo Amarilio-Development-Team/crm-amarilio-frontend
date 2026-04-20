@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { PM_IMAGE, MANAGER_IMAGE, SALESPERSON_IMAGE, DEVELOPER_IMAGE, DESIGNER_IMAGE, WRITER_IMAGE, MARKETING_IMAGE } from '@/assets/auth/index';
 import AMARILIO_LOGO from '@/assets/amarilio.svg';
 import Image from 'next/image';
+import OrbitNode from './OrbitNode';
 
 interface AuthLayoutProps {
   id: string;
@@ -74,7 +75,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ id, title, subtitle, children, 
       <section className="relative hidden min-h-[700px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-white sm:flex lg:w-6/12 [[data-theme=black]_&]:bg-transparent">
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,#FFDE4Bcc_0%,#FFEA8566_40%,#FFFDEA_70%)] [[data-theme=black]_&]:bg-[radial-gradient(circle_at_center,#FFDE4B4d_0%,transparent_100%)]"></div>
 
-        <div className="relative z-20 mb-12 text-center">
+        <div className="relative z-20 mb-28 text-center">
           <h2 className="text-2xl font-bold">
             Gestión <span className="text-yellow-600 [[data-theme=black]_&]:text-yellow-400">Estratégica</span>
           </h2>
@@ -82,41 +83,35 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ id, title, subtitle, children, 
 
         <div className="relative z-10 flex aspect-square w-full max-w-[400px] items-center justify-center">
           <div className="absolute h-full w-full rounded-full border border-yellow-500/20">
-            <div className="absolute left-1/2 top-0 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-2 shadow-lg">
-              <Image src={DESIGNER_IMAGE} alt="Diseñadores" title="Diseñadores" className="object-contain" />
-            </div>
-
-            <div className="absolute bottom-[15%] right-[5%] flex h-14 w-14 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-white p-1 shadow-lg">
-              <Image src={WRITER_IMAGE} alt="Contenido" title="Escritores y creadores de contenido" className="object-contain" />
-            </div>
-
-            <div className="absolute left-[5%] top-[25%] flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 shadow-lg">
-              <Image src={MARKETING_IMAGE} alt="SEO y Marketing" title="SEO y Marketing Digital" className="object-contain" />
-            </div>
+            <OrbitNode src={DESIGNER_IMAGE} alt="Diseñadores" title="Diseñadores" positionClasses="left-1/2 top-0 -translate-x-1/2 z-40 -translate-y-1/2" />
+            <OrbitNode src={WRITER_IMAGE} alt="Contenido" title="Escritores y Contenido" positionClasses="bottom-[20%] z-40 right-[10%] translate-x-1/2 translate-y-1/2" imageContainerClasses="p-1" />
+            <OrbitNode
+              src={MARKETING_IMAGE}
+              alt="SEO y Marketing"
+              title="SEO y Marketing Digital"
+              positionClasses="left-[5%] z-40 top-[25%] -translate-x-1/2 -translate-y-1/2"
+              imageContainerClasses="p-1"
+            />
           </div>
 
           <div className="absolute h-[70%] w-[70%] rounded-full border border-yellow-500/30">
-            <div className="absolute bottom-[15%] left-[5%] flex h-14 w-14 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-white p-1 shadow-lg">
-              <Image src={DEVELOPER_IMAGE} alt="Desarrollador" title="Desarrolladores y equipo técnico" className="object-contain" />
-            </div>
-
-            <div className="absolute right-[-5%] top-[40%] flex h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white p-1 shadow-lg">
-              <Image src={SALESPERSON_IMAGE} alt="Implementador/vendedor" title="Implementadores y vendedores" className="object-contain" />
-            </div>
+            <OrbitNode
+              src={DEVELOPER_IMAGE}
+              alt="Desarrollador"
+              title="Desarrollo Técnico"
+              positionClasses="bottom-[15%] z-40 left-[5%] -translate-x-1/2 translate-y-1/2"
+              imageContainerClasses="p-1"
+            />
+            <OrbitNode src={SALESPERSON_IMAGE} alt="Ventas" title="Implementadores" positionClasses="right-[-5%] z-40 top-[40%] -translate-y-1/2 translate-x-1/2" imageContainerClasses="p-1" />
           </div>
 
           <div className="absolute h-[40%] w-[40%] rounded-full border border-yellow-500/40">
-            <div className="absolute bottom-[-10%] left-[40%] flex h-14 w-14 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-white p-1 shadow-lg">
-              <Image src={MANAGER_IMAGE} alt="Gerente (imagen)" title="Gerentes" className="object-contain" />
-            </div>
-
-            <div className="absolute left-[20%] top-0 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 shadow-lg">
-              <Image src={PM_IMAGE} alt="Product Manager" title="Product Managers" className="object-contain" />
-            </div>
+            <OrbitNode src={MANAGER_IMAGE} alt="Gerentes" title="Gerentes" positionClasses="bottom-[-5%] left-[80%] z-40 -translate-x-1/2 translate-y-1/2" imageContainerClasses="p-1" />
+            <OrbitNode src={PM_IMAGE} alt="Product Manager" title="Product Managers" positionClasses="left-[20%] z-40 top-0 -translate-x-1/2 -translate-y-1/2" imageContainerClasses="p-1" />
           </div>
 
           <div className="relative z-20 flex h-24 w-24 items-center justify-center rounded-full border-4 border-white bg-white/70 p-1 shadow-[0_0_50px_rgba(234,179,8,0.6)] [[data-theme=black]_&]:border-gray-900">
-            <Image src={AMARILIO_LOGO} alt="Amarilio Logo" title="Amarilio" className="object-scale-down" />
+            <Image src={AMARILIO_LOGO} alt="Logo" title="Sistema Central" className="object-scale-down" />
           </div>
         </div>
 
