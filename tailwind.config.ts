@@ -5,7 +5,7 @@ export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: {
-      mblg: '540px',
+      mblg: '430px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
@@ -57,7 +57,7 @@ export default {
           },
 
           '.container-color': {
-            background: '#E8E8E8',
+            background: '#F8F8F8',
           },
 
           '.main-container-color': {
@@ -105,10 +105,6 @@ export default {
           },
           '.primary-color-950': {
             background: '#463500',
-          },
-
-          '.border-primary': {
-            borderColor: '#20202011',
           },
         },
 
@@ -182,10 +178,6 @@ export default {
           },
           '.primary-color-950': {
             background: '#FFF6C5',
-          },
-
-          '.border-primary': {
-            borderColor: '#f8f8f823',
           },
         },
       },

@@ -9,7 +9,7 @@ const InicioSesionPage: React.FC = () => {
       title="¡Bienvenido de nuevo!"
       subtitle="Inicia sesión en tu cuenta con tus credenciales para poder continuar"
       footerText="¿No tienes una cuenta?"
-      footerLink="/registro"
+      footerLink="/registro-usuario"
       footerLabel="Ponte en contacto con nosotros"
     >
       <LoginForm />

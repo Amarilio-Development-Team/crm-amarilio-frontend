@@ -15,7 +15,7 @@ export function InputField({ label, ...props }: InputFieldProps) {
   const [field, meta] = useField(props);
 
   return (
-    <div className="flex flex-col text-start">
+    <div className="relative z-30 flex flex-col text-start">
       <label className="text-placeholder text-[14.5px] font-medium sm:text-[15px]" htmlFor={props.id || props.name}>
         {label}
       </label>

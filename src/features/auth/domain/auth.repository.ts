@@ -1,8 +1,6 @@
-import { AuthUser } from './auth.types';
+import { AuthUser, SignupCredentials, SignUpResponse } from './auth.types';
 
 export interface AuthRepository {
   login(email: string, password: string): Promise<AuthUser>;
-  //   signUp(name: string, email: string, password: string): Promise<AuthUser>;
-  //   logout(): Promise<void>;
-  //   getCurrentUser(): Promise<AuthUser | null>;
+  signUp(credentials: SignupCredentials): Promise<SignUpResponse>;
 }

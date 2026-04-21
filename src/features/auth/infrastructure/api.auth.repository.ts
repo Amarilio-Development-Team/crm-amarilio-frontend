@@ -1,5 +1,5 @@
 import { AuthRepository } from '../domain/auth.repository';
-import { AuthUser } from '../domain/auth.types';
+import { AuthUser, SignupCredentials, SignUpResponse } from '../domain/auth.types';
 
 export class ApiAuthRepository implements AuthRepository {
   async login(email: string, password: string): Promise<AuthUser> {
@@ -35,12 +35,33 @@ export class ApiAuthRepository implements AuthRepository {
 
     return {
       id: data.user.id,
-      name: data.user.name,
+      firstName: data.user.name,
+      paternalLastName: data.user.paternalLastName,
       email: data.user.email,
       avatarUrl: data.user.avatarUrl,
       roles: data.user.roles,
       status: data.user.status,
       token: data.token,
+    };
+  }
+
+  async signUp(credentials: SignupCredentials): Promise<SignUpResponse> {
+    const response = await fetch('/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Ups, algo salió mal');
+    }
+
+    const data = await response.json();
+
+    return {
+      success: true,
+      newUserId: data.user.id,
     };
   }
 }

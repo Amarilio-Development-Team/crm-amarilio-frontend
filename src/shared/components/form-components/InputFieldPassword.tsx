@@ -2,7 +2,7 @@ import { useField } from 'formik';
 import { EyeIcon } from '@heroicons/react/24/solid';
 
 interface InputFieldProps {
-  isSignIn: boolean;
+  isSignIn?: boolean;
   label: string;
   name: string;
   type: string;
