@@ -72,7 +72,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ id, title, subtitle, children, 
         </div>
       </section>
 
-      <section className="relative hidden min-h-[700px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-white sm:flex lg:w-6/12 [[data-theme=black]_&]:bg-transparent">
+      <section className="relative hidden min-h-[700px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-white lg:flex lg:w-6/12 [[data-theme=black]_&]:bg-transparent">
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,#FFDE4Bcc_0%,#FFEA8566_40%,#FFFDEA_70%)] [[data-theme=black]_&]:bg-[radial-gradient(circle_at_center,#FFDE4B4d_0%,transparent_100%)]"></div>
 
         <div className="relative z-20 mb-28 text-center">
