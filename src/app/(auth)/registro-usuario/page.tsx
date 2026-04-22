@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { SignupForm } from '@/features/auth/presentation/SignupForm';
+import { SignupForm } from '@/features/auth/presentation/components/SignupForm';
 
 const RegistroUsuarioPage: React.FC = () => {
   return (
