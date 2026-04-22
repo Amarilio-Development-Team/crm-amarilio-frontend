@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthLayout from '@/features/auth/presentation/AuthLayout';
+import AuthLayout from '@/features/auth/presentation/components/AuthLayout';
 import { LoginForm } from '@/features/auth/presentation/components/LoginForm';
 
 const InicioSesionPage: React.FC = () => {
