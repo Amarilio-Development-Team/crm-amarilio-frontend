@@ -4,7 +4,7 @@ import { SignupForm } from '@/features/auth/presentation/components/SignupForm';
 
 const RegistroUsuarioPage: React.FC = () => {
   return (
-    <div id="registro-usuario" className="container flex min-h-screen w-full max-w-[600px] flex-col py-8 xl:max-w-[1600px]">
+    <section id="registro-usuario" className="container flex min-h-screen w-full max-w-[600px] flex-col py-8 xl:max-w-[1600px]">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[20%] w-full bg-white">
         <div
           className="absolute inset-0"
@@ -48,7 +48,7 @@ const RegistroUsuarioPage: React.FC = () => {
 
         <SignupForm />
       </div>
-    </div>
+    </section>
   );
 };
 
