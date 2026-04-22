@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthLayout from '@/features/auth/presentation/AuthLayout';
-import { LoginForm } from '@/features/auth/presentation/LoginForm';
+import { LoginForm } from '@/features/auth/presentation/components/LoginForm';
 
 const InicioSesionPage: React.FC = () => {
   return (

@@ -1,12 +1,12 @@
 'use client';
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import { useState } from 'react';
-import { loginAction } from '../infrastructure/auth.actions';
+import { loginAction } from '../../infrastructure/auth.actions';
 import { sileo } from 'sileo';
 import { useRouter } from 'next/navigation';
 import { InputField } from '@/shared/components/form-components/InputField';
 import { InputFieldPassword } from '@/shared/components/form-components/InputFieldPassword';
+import { LoginSchema } from '../schemas/login.schema';
 
 export function LoginForm() {
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -15,10 +15,7 @@ export function LoginForm() {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
-      validationSchema={Yup.object({
-        email: Yup.string().email('Debe ser un correo válido').required('El correo es requerido'),
-        password: Yup.string().required('La contraseña es requerida'),
-      })}
+      validationSchema={LoginSchema}
       onSubmit={async (values, { setSubmitting }) => {
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 1500));
 
