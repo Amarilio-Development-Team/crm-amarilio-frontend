@@ -1,14 +1,18 @@
 'use client';
+
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import { useState } from 'react';
-import { signUpAction } from '../infrastructure/auth.actions';
+import { Icon } from '@iconify/react';
 import { sileo } from 'sileo';
+import { signUpAction } from '../../infrastructure/auth.actions';
+import { UserRole } from '../../domain/auth.types';
+import { SIGNUP_ROLE_OPTIONS } from '../constants/signup.constants';
+import { SignupSchema } from '../schemas/signup.schema';
 import { InputField } from '@/shared/components/form-components/InputField';
 import { InputFieldPassword } from '@/shared/components/form-components/InputFieldPassword';
-import { CardSelector, CardOption } from '@/shared/components/form-components/CardSelector';
-import { UserRole } from '../domain/auth.types';
-import { PM_IMAGE, MANAGER_IMAGE, SALESPERSON_IMAGE, DEVELOPER_IMAGE, DESIGNER_IMAGE, WRITER_IMAGE, MARKETING_IMAGE } from '@/assets/auth/index';
+import { CardSelector } from '@/shared/components/form-components/CardSelector';
+import usePasswordGenerator from '@/shared/hooks/usePasswordGenerator';
+import useClipboard from '@/shared/hooks/useClipboard';
 
 interface SignupFormValues {
   firstName: string;
@@ -19,19 +23,11 @@ interface SignupFormValues {
   role: UserRole | '';
 }
 
-const roleOptions: CardOption[] = [
-  { value: 'designer', title: 'Diseñador', imageSrc: DESIGNER_IMAGE },
-  { value: 'writer', title: 'Contenido', imageSrc: WRITER_IMAGE },
-  { value: 'seo', title: 'SEO', imageSrc: MARKETING_IMAGE },
-  { value: 'marketing', title: 'Marketing digital', imageSrc: MARKETING_IMAGE },
-  { value: 'developer', title: 'Desarrollo Técnico', imageSrc: DEVELOPER_IMAGE },
-  { value: 'sales', title: 'Implementador', imageSrc: SALESPERSON_IMAGE },
-  { value: 'manager', title: 'Gerente', imageSrc: MANAGER_IMAGE },
-  { value: 'pm', title: 'Product Manager', imageSrc: PM_IMAGE },
-];
-
 export function SignupForm() {
   const [isRedirecting, setIsRedirecting] = useState(false);
+
+  const { generatePassword } = usePasswordGenerator();
+  const { copy } = useClipboard();
 
   return (
     <Formik<SignupFormValues>
@@ -43,17 +39,9 @@ export function SignupForm() {
         password: '',
         role: '',
       }}
-      validationSchema={Yup.object({
-        firstName: Yup.string().required('El nombre es requerido'),
-        paternalLastName: Yup.string().required('El apellido paterno es requerido'),
-        maternalLastName: Yup.string().required('El apellido materno es requerido'),
-        email: Yup.string().email('Debe ser un correo válido').required('El correo es requerido'),
-        password: Yup.string().required('La contraseña es requerida'),
-        role: Yup.string().oneOf(['designer', 'writer', 'marketing', 'developer', 'sales', 'manager', 'pm', 'seo']).required('Por favor selecciona un rol'),
-      })}
+      validationSchema={SignupSchema}
       onSubmit={async (values, { setSubmitting }) => {
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2500));
-
         const payload = { ...values, roles: [values.role as UserRole] };
 
         const promisesExecution = Promise.all([signUpAction(payload), minLoadingTime]).then(([serverResult]) => {
@@ -66,9 +54,7 @@ export function SignupForm() {
 
         sileo.promise(promisesExecution, {
           loading: { title: 'Registrando nuevo usuario...' },
-          success: () => {
-            return { title: 'Usuario registrado exitosamente' };
-          },
+          success: () => ({ title: 'Usuario registrado exitosamente' }),
           error: err => {
             const errorMessage = err instanceof Error ? err.message : 'Ocurrió un error desconocido';
             setSubmitting(false);
@@ -84,8 +70,14 @@ export function SignupForm() {
         }
       }}
     >
-      {({ isSubmitting }) => {
+      {({ isSubmitting, setFieldValue }) => {
         const isDisabled = isSubmitting || isRedirecting;
+
+        const handleGenerateSecurePassword = () => {
+          const newPass = generatePassword({ length: 16 });
+          setFieldValue('password', newPass);
+          copy(newPass);
+        };
 
         return (
           <Form className="flex w-full flex-col gap-8">
@@ -94,10 +86,18 @@ export function SignupForm() {
               <InputField label="Apellido Paterno" name="paternalLastName" type="text" placeholder="Ej. Pérez" />
               <InputField label="Apellido Materno" name="maternalLastName" type="text" placeholder="Ej. Gómez" />
               <InputField label="Correo electrónico" name="email" type="email" placeholder="Ej. correo@ejemplo.com" />
-              <InputFieldPassword label="Contraseña" name="password" type="password" placeholder="* * * * * * * *" />
+
+              <div className="space-y-2">
+                <InputFieldPassword label="Contraseña" name="password" type="password" placeholder="* * * * * * * *" />
+
+                <button type="button" onClick={handleGenerateSecurePassword} className="flex items-center gap-1 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700">
+                  <Icon icon="tabler:lock" className="size-4" />
+                  Generar contraseña
+                </button>
+              </div>
             </div>
 
-            <CardSelector name="role" options={roleOptions} label="Selecciona tu perfil profesional" />
+            <CardSelector name="role" options={SIGNUP_ROLE_OPTIONS} label="Selecciona tu perfil profesional" />
 
             <button
               type="submit"
