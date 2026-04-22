@@ -80,29 +80,31 @@ export function SignupForm() {
         };
 
         return (
-          <Form className="flex w-full flex-col gap-8">
-            <div className="w-full space-y-4">
-              <InputField label="Nombre" name="firstName" type="text" placeholder="Ej. Juan" />
-              <InputField label="Apellido Paterno" name="paternalLastName" type="text" placeholder="Ej. Pérez" />
-              <InputField label="Apellido Materno" name="maternalLastName" type="text" placeholder="Ej. Gómez" />
-              <InputField label="Correo electrónico" name="email" type="email" placeholder="Ej. correo@amarilio.com" />
+          <Form className="mt-6 flex w-full flex-col gap-8">
+            <section className="flex flex-col gap-4 xl:relative xl:flex-row xl:gap-10">
+              <div className="h-max w-full space-y-4 xl:sticky xl:top-10">
+                <InputField label="Nombre" name="firstName" type="text" placeholder="Ej. Juan" />
+                <InputField label="Apellido Paterno" name="paternalLastName" type="text" placeholder="Ej. Pérez" />
+                <InputField label="Apellido Materno" name="maternalLastName" type="text" placeholder="Ej. Gómez" />
+                <InputField label="Correo electrónico" name="email" type="email" placeholder="Ej. correo@amarilio.com" />
 
-              <div className="space-y-2">
-                <InputFieldPassword label="Contraseña" name="password" type="password" placeholder="* * * * * * * *" />
+                <div className="space-y-2">
+                  <InputFieldPassword label="Contraseña" name="password" type="password" placeholder="* * * * * * * *" />
 
-                <button type="button" onClick={handleGenerateSecurePassword} className="flex items-center gap-1 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700">
-                  <Icon icon="tabler:lock" className="size-4" />
-                  Generar contraseña
-                </button>
+                  <button type="button" onClick={handleGenerateSecurePassword} className="flex items-center gap-1 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700">
+                    <Icon icon="tabler:lock" className="size-4" />
+                    Generar contraseña
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <CardSelector name="role" options={SIGNUP_ROLE_OPTIONS} label="Selecciona el perfil profesional" />
+              <CardSelector name="role" options={SIGNUP_ROLE_OPTIONS} label="Selecciona el perfil profesional" />
+            </section>
 
             <button
               type="submit"
               disabled={isDisabled}
-              className={`font-rns w-full rounded-[5px] px-6 py-2.5 text-center font-bold text-black shadow-xl transition-all duration-200 ${
+              className={`font-rns mt-6 w-full rounded-[5px] px-10 py-2.5 text-center font-bold text-black shadow-xl transition-all duration-200 xl:mx-auto xl:w-max ${
                 isDisabled ? 'cursor-not-allowed bg-gray-400 opacity-80' : 'primary-color-500 transition-all duration-200 hover:primary-color-400 hover:scale-[103%]'
               } `}
             >
