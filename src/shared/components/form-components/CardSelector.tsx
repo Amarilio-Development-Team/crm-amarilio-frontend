@@ -27,7 +27,7 @@ export function CardSelector({ name, options, label }: CardSelectorProps) {
     <div className="flex w-full flex-col text-start">
       {label && <label className="text-placeholder text-[14.5px] font-medium sm:text-[15px]">{label}</label>}
 
-      <div className="mt-2 grid grid-cols-1 gap-4 mblg:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-2 grid grid-cols-1 gap-4 mblg:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
         {options.map(option => {
           const isSelected = field.value === option.value;
           const hasError = meta.error && meta.touched;

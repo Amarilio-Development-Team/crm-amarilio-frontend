@@ -85,7 +85,7 @@ export function SignupForm() {
               <InputField label="Nombre" name="firstName" type="text" placeholder="Ej. Juan" />
               <InputField label="Apellido Paterno" name="paternalLastName" type="text" placeholder="Ej. Pérez" />
               <InputField label="Apellido Materno" name="maternalLastName" type="text" placeholder="Ej. Gómez" />
-              <InputField label="Correo electrónico" name="email" type="email" placeholder="Ej. correo@ejemplo.com" />
+              <InputField label="Correo electrónico" name="email" type="email" placeholder="Ej. correo@amarilio.com" />
 
               <div className="space-y-2">
                 <InputFieldPassword label="Contraseña" name="password" type="password" placeholder="* * * * * * * *" />

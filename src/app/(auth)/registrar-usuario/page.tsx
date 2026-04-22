@@ -4,7 +4,7 @@ import { SignupForm } from '@/features/auth/presentation/components/SignupForm';
 
 const RegistroUsuarioPage: React.FC = () => {
   return (
-    <div id="registro.usuario" className="container flex min-h-screen w-full max-w-[3900px] flex-col py-8 lg:flex-row">
+    <div id="registro-usuario" className="container flex min-h-screen w-full max-w-[3900px] flex-col py-8 lg:flex-row">
       <section className="relative mx-auto w-full pb-[80px] pt-[120px] lg:w-6/12">
         <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[20%] w-full bg-white">
           <div
@@ -44,7 +44,7 @@ const RegistroUsuarioPage: React.FC = () => {
 
           <article className="relative z-20 space-y-0.5">
             <h1 className="text-strong text-center text-2xl font-semibold">Registro de Usuario</h1>
-            <p className="text-lower text-center font-light">Ingresa la información solicitada para crear tu cuenta.</p>
+            <p className="text-lower text-center font-light">Ingresa la información solicitada para crear la cuenta.</p>
           </article>
 
           <SignupForm />
