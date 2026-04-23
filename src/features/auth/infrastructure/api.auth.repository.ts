@@ -64,4 +64,6 @@ export class ApiAuthRepository implements AuthRepository {
       newUserId: data.user.id,
     };
   }
+
+  async logout(): Promise<void> {}
 }
