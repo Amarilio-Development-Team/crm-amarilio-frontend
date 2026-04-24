@@ -6,7 +6,6 @@ import { LoginUseCase } from '../application/login.use-case';
 import { SignupCredentials } from '../domain/auth.types';
 import { SignupUseCase } from '../application/signup.use-case';
 import { LogoutUseCase } from '../application/logout.use-case';
-import { redirect } from 'next/navigation';
 
 type ActionResponse = { error?: string; success?: boolean };
 
