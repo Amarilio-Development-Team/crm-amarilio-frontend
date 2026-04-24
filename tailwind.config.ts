@@ -32,7 +32,7 @@ export default {
   daisyui: {
     themes: [
       'fantasy',
-      'black',
+      'business',
       {
         fantasy: {
           // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -57,11 +57,15 @@ export default {
           },
 
           '.container-color': {
-            background: '#F8F8F8',
+            background: '#f8f8f8',
           },
 
           '.main-container-color': {
             background: '#FFFFFF',
+          },
+
+          '.border-main': {
+            borderColor: '#08080822',
           },
 
           '.input-bg': {
@@ -108,9 +112,9 @@ export default {
           },
         },
 
-        black: {
+        business: {
           // eslint-disable-next-line @typescript-eslint/no-require-imports
-          ...require('daisyui/src/theming/themes')['black'],
+          ...require('daisyui/src/theming/themes')['business'],
 
           '.text-strong': {
             color: '#FEFEFE',
@@ -136,6 +140,10 @@ export default {
           },
           '.main-container-color': {
             background: '#202020',
+          },
+
+          '.border-main': {
+            borderColor: '#FFFFFF44',
           },
 
           '.input-bg': {
@@ -182,7 +190,7 @@ export default {
         },
       },
     ],
-    darkTheme: 'black',
+    darkTheme: 'business',
     base: true,
     styled: true,
     utils: true,
