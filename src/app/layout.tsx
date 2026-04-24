@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interFont.variable} h-max antialiased`}>
+    <html lang="en" className={`${interFont.variable} antialiased`}>
       <body className="w-full" data-theme="fantasy">
         <Toaster
           position="top-right"
