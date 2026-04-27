@@ -1,6 +1,6 @@
-import { CardOption } from '@/shared/components/form-components/CardSelector';
+import { FlipCardData } from '@/features/auth/presentation/components/FlipCard';
 
-export const SIGNUP_ROLE_OPTIONS: CardOption[] = [
+export const SIGNUP_ROLE_OPTIONS: FlipCardData[] = [
   {
     value: 'designer',
     title: 'Diseñador',

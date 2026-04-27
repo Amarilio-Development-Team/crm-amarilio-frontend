@@ -10,9 +10,10 @@ import { SIGNUP_ROLE_OPTIONS } from '../constants/signup.constants';
 import { SignupSchema } from '../schemas/signup.schema';
 import { InputField } from '@/shared/components/form-components/InputField';
 import { InputFieldPassword } from '@/shared/components/form-components/InputFieldPassword';
-import { CardSelector } from '@/shared/components/form-components/CardSelector';
+import { OptionSelector } from '@/shared/components/form-components/OptionSelector';
 import usePasswordGenerator from '@/shared/hooks/usePasswordGenerator';
 import useClipboard from '@/shared/hooks/useClipboard';
+import { FlipCard } from './FlipCard';
 
 interface SignupFormValues {
   firstName: string;
@@ -20,7 +21,7 @@ interface SignupFormValues {
   maternalLastName: string;
   email: string;
   password: string;
-  role: UserRole | '';
+  roles: UserRole[];
 }
 
 export function SignupForm() {
@@ -37,13 +38,12 @@ export function SignupForm() {
         maternalLastName: '',
         email: '',
         password: '',
-        role: '',
+        roles: [],
       }}
       validationSchema={SignupSchema}
       onSubmit={async (values, { setSubmitting }) => {
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2500));
-        const payload = { ...values, roles: [values.role as UserRole] };
-
+        const payload = { ...values };
         const promisesExecution = Promise.all([signUpAction(payload), minLoadingTime]).then(([serverResult]) => {
           if (!serverResult.success) {
             throw new Error(serverResult.error || 'Error al registrar usuario');
@@ -98,7 +98,7 @@ export function SignupForm() {
                 </div>
               </div>
 
-              <CardSelector name="role" options={SIGNUP_ROLE_OPTIONS} label="Selecciona el perfil profesional" />
+              <OptionSelector name="role" options={SIGNUP_ROLE_OPTIONS} maxSelections={3} multiple label="Selecciona el perfil profesional" renderOption={props => <FlipCard {...props} />} />
             </section>
 
             <button
