@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import SearchInput from '@/shared/components/SearchInput';
-import { globalSearchAction } from '../infrastructure/global-search.actions';
+import { globalSearchAction } from '../application/global-search.actions';
 
 type SearchResult = { id: string; title: string; type: 'USER' | 'PROJECT' };
 

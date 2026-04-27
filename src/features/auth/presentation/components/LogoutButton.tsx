@@ -1,6 +1,6 @@
 'use client';
 
-import { logoutAction } from '../../infrastructure/auth.actions';
+import { logoutAction } from '../../application/auth.actions';
 import { useState } from 'react';
 import { sileo } from 'sileo';
 

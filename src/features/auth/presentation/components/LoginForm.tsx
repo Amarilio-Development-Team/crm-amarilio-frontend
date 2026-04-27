@@ -1,7 +1,7 @@
 'use client';
 import { Formik, Form } from 'formik';
 import { useState } from 'react';
-import { loginAction } from '../../infrastructure/auth.actions';
+import { loginAction } from '../../application/auth.actions';
 import { sileo } from 'sileo';
 import { useRouter } from 'next/navigation';
 import { InputField } from '@/shared/components/form-components/InputField';
