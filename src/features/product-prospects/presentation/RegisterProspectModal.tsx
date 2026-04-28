@@ -15,7 +15,7 @@ const RegisterProspectModal: React.FC = () => {
       case 2:
         return (
           <div className="p-8 text-center">
-            <h4 className="text-lg font-semibold">Paso 2 en construcción 🚧</h4>
+            <h4 className="text-lg font-semibold">Step 2</h4>
           </div>
         );
 
