@@ -26,7 +26,7 @@ export function InputFieldPassword({ label, isSignIn, ...props }: InputFieldProp
     <div className="relative flex flex-col text-start">
       {isSignIn && <span className="text-placeholder absolute right-0 top-0 text-xs">¿Olvidaste tu contraseña?</span>}
 
-      <label className="text-placeholder text-[14.5px] font-medium sm:text-[15px]" htmlFor={props.id || props.name}>
+      <label className="text-placeholder text-[13px] font-medium sm:text-[14px]" htmlFor={props.id || props.name}>
         {label}
       </label>
       {props.type === 'password' ? (
