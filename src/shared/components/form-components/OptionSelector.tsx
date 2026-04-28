@@ -19,7 +19,6 @@ interface OptionSelectorProps<T extends BaseOption> {
   label?: string;
   renderOption: (props: RenderOptionProps<T>) => ReactNode;
   gridClassName?: string;
-  // Nuevas propiedades para control múltiple
   multiple?: boolean;
   maxSelections?: number;
 }
@@ -39,23 +38,18 @@ export function OptionSelector<T extends BaseOption>({
     helpers.setTouched(true);
 
     if (multiple) {
-      // Nos aseguramos de que el valor actual sea un arreglo
       const currentValue = Array.isArray(field.value) ? field.value : [];
       const isAlreadySelected = currentValue.includes(value);
 
       if (isAlreadySelected) {
-        // Si ya está, lo quitamos (toggle)
         helpers.setValue(currentValue.filter((v: string) => v !== value));
       } else {
-        // Si no está, revisamos si ya llegamos al límite máximo
         if (maxSelections && currentValue.length >= maxSelections) {
-          return; // Aquí podrías disparar un toast de error si lo deseas
+          return;
         }
-        // Si hay espacio, lo agregamos
         helpers.setValue([...currentValue, value]);
       }
     } else {
-      // Comportamiento original (selección única)
       helpers.setValue(value);
     }
   };
@@ -68,7 +62,6 @@ export function OptionSelector<T extends BaseOption>({
 
       <div className={gridClassName}>
         {options.map(option => {
-          // Calculamos isSelected dependiendo de si es múltiple o no
           const isSelected = multiple ? Array.isArray(field.value) && field.value.includes(option.value) : field.value === option.value;
 
           return (
