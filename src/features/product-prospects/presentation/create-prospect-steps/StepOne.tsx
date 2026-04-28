@@ -178,7 +178,7 @@ export const Step1ClientSelection: React.FC = () => {
                         Buscando clientes...
                       </div>
                     ) : searchResults.length > 0 ? (
-                      <ul className="max-h-48 space-y-2 overflow-y-auto pr-2">
+                      <ul className="max-h-48 space-y-2 overflow-y-auto">
                         {searchResults.map(client => {
                           const isSelected = values.selectedClientId === client.id;
                           return (
