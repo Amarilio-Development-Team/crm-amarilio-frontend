@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sileo';
+import { InstallPrompt } from '@/features/push-notifications/components/InstallPrompt';
 
 const interFont = Inter({
   variable: '--font-inter',
@@ -32,6 +33,8 @@ export default function RootLayout({
             },
           }}
         />
+
+        <InstallPrompt />
         {children}
       </body>
     </html>

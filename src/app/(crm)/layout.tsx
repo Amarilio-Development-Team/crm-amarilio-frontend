@@ -1,3 +1,4 @@
+import { PushNotificationManager } from '@/features/push-notifications/components/PushNotificationManager';
 import Navbar from '@/shared/components/Navbar/Navbar';
 import SideMenu from '@/shared/components/SideMenu/SideMenu';
 // import { getSession } from '@/shared/lib/auth';
@@ -20,6 +21,7 @@ export default async function DashboardLayout({
   return (
     <main id="crm-global" className="relative mx-auto flex max-h-max min-h-[500px] w-full md:max-h-screen md:flex-row">
       <SideMenu userRole={'admin'} />
+      <PushNotificationManager currentUserId="usuario-123" />
 
       <div className="main-container-color relative min-h-screen w-full overflow-y-scroll px-6">
         <Navbar />
