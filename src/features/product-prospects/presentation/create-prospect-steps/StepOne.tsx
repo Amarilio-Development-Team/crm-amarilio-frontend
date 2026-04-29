@@ -10,6 +10,8 @@ import SearchInput from '@/shared/components/SearchInput';
 import { searchClientAction } from '../../actions/prospect-search.action';
 import { ClientResult } from '../../../global-search/application/global-search.types';
 import { InputField } from '@/shared/components/form-components/InputField';
+import { SelectField } from '@/shared/components/form-components/SelectField';
+import MEXICO_STATES from '@/shared/data/mexico-states';
 
 interface ClientCardOption extends BaseOption {
   title: string;
@@ -160,6 +162,7 @@ export const Step1ClientSelection: React.FC = () => {
                     <InputField label="RFC" name="clientRfc" type="text" placeholder="Ej. XEXX010101000" />
                     <InputField label="Correo electrónico (Opcional)" name="clientEmail" type="email" placeholder="Ej. contacto@empresa.com" />
                     <InputField label="Teléfono (Opcional)" name="clientPhone" type="text" placeholder="Ej. 55 1234 5678" />
+                    <SelectField name="state" placeholder="Estado" label="Estado de la república" options={MEXICO_STATES} />
                   </div>
                 </div>
               )}

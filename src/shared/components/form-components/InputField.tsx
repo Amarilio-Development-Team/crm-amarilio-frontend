@@ -20,7 +20,7 @@ export function InputField({ label, ...props }: InputFieldProps) {
         {label}
       </label>
       <input
-        className={`text-strong input-bg mt-2 w-full rounded-[5px] px-3 py-3 outline-none disabled:cursor-not-allowed disabled:bg-base-200 sm:py-4 ${meta.error && meta.touched ? 'input-error' : ''}`}
+        className={`text-strong input-bg mt-2 w-full rounded-[5px] px-3 py-3 outline-none disabled:cursor-not-allowed disabled:bg-base-200 ${meta.error && meta.touched ? 'input-error' : ''}`}
         {...field}
         {...props}
       />
