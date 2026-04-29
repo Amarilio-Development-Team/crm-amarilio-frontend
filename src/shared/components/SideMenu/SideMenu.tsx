@@ -3,14 +3,15 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { useSidebarStore } from '../stores/sidebar.store';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useSidebarStore } from '../../stores/sidebar.store';
 import AMARILIO_LOGO from '@/assets/amarilio.svg';
 import LogoutButton from '@/features/auth/presentation/components/LogoutButton';
-import { MENU_ITEMS } from '../data/side-menu.data';
-import { MenuItem } from '../types/side-menu.types';
+import { MENU_ITEMS } from '../../data/side-menu.data';
+import { MenuItem } from '../../types/side-menu.types';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
+import { sidebarVariants } from './framer-variants';
 
 const SidebarItem = ({ item, isCollapsed }: { item: MenuItem; isCollapsed: boolean }) => {
   const pathname = usePathname();
@@ -122,36 +123,6 @@ const SideMenu: React.FC<SideMenuProps> = ({ userRole }) => {
     return { ...group, items: visibleItems };
   }).filter(group => group.items.length > 0);
 
-  const sidebarVariants: Variants = {
-    mobileClosed: {
-      x: '-100%',
-      width: '0px',
-      padding: 0,
-      transition: { type: 'spring', stiffness: 400, damping: 40 },
-    },
-    mobileOpen: {
-      x: '0%',
-      width: '280px',
-      padding: 0,
-      transition: { type: 'spring', stiffness: 400, damping: 40 },
-    },
-    desktopClosed: {
-      x: '0%',
-      minWidth: '80px',
-      width: '80px',
-      padding: 0,
-      opacity: 1,
-      transition: { type: 'spring', stiffness: 400, damping: 40 },
-    },
-    desktopOpen: {
-      x: '0%',
-      minWidth: '300px',
-      width: '330px',
-      opacity: 1,
-      transition: { type: 'spring', stiffness: 300, damping: 30 },
-    },
-  };
-
   const overlayVariants = {
     closed: { opacity: 0 },
     open: { opacity: 1 },
@@ -183,17 +154,13 @@ const SideMenu: React.FC<SideMenuProps> = ({ userRole }) => {
               <Image src={AMARILIO_LOGO} alt="Amarilio Logo" className="h-5 w-auto lg:h-6" />
             </div>
 
-            {/* Botón Desktop (Contraer/Expandir) */}
-            <button
-              onClick={() => (isOpen ? close() : open())}
-              className="hidden rounded-lg p-2 text-slate-500 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 lg:flex"
-              aria-label="Alternar menú"
-            >
+            {/* desktop button (toggle) */}
+            <button onClick={() => (isOpen ? close() : open())} className="hidden rounded-lg p-2 transition-colors hover:container-color dark:hover:bg-gray-800 lg:flex" aria-label="Alternar menú">
               <Icon icon={isOpen ? 'lucide:panel-left-close' : 'lucide:panel-left-open'} className="shrink-0 text-xl" />
             </button>
 
-            {/* Botón Mobile (Cerrar) */}
-            <button onClick={close} className="btn btn-circle btn-ghost btn-sm text-slate-400 hover:text-red-500 lg:hidden" aria-label="Cerrar menú">
+            {/* mobile button (close) */}
+            <button onClick={close} className="btn btn-circle btn-ghost btn-sm hover:text-red-500 lg:hidden" aria-label="Cerrar menú">
               <Icon icon="lucide:x" className="text-xl" />
             </button>
           </div>
@@ -203,7 +170,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ userRole }) => {
               <React.Fragment key={index}>
                 {group.groupLabel && (
                   <li className={`whitespace-nowrap pb-2 pt-4 text-xs font-bold uppercase tracking-wider opacity-50 transition-all duration-300 ${isCollapsed ? 'text-center text-[10px]' : ''}`}>
-                    {isCollapsed ? group.groupLabel.slice(0, 3) : group.groupLabel} {/* Abreviatura si está colapsado */}
+                    {isCollapsed ? group.groupLabel.slice(0, 3) : group.groupLabel}
                   </li>
                 )}
                 {group.items.map(item => (

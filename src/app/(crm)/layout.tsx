@@ -1,5 +1,5 @@
 import Navbar from '@/shared/components/Navbar/Navbar';
-import SideMenu from '@/shared/components/SideMenu';
+import SideMenu from '@/shared/components/SideMenu/SideMenu';
 // import { getSession } from '@/shared/lib/auth';
 // import { redirect } from 'next/navigation';
 import DashboardSWRConfig from '@/shared/components/SWRConfig';
