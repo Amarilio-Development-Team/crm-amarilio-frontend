@@ -52,7 +52,7 @@ const GlobalSearchBar: React.FC = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-md">
+    <div ref={containerRef} className="relative w-full md:max-w-md">
       <SearchInput onSearch={handleSearch} placeholder="Buscar usuarios, proyectos..." debounceMs={400} />
 
       {isOpen && (

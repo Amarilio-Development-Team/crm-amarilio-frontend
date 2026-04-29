@@ -4,7 +4,7 @@ import React from 'react';
 
 const SalesRepresentativeBoard: React.FC = () => {
   return (
-    <section id="home" className="grid h-[calc(100vh-150px)] place-items-center">
+    <section id="home" className="h-max py-6 md:min-h-[calc(100vh-96px)] md:py-0">
       <NewProspectButton />
 
       <RegisterProspectModal />
