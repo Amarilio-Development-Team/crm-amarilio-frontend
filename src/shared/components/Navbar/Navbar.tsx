@@ -32,7 +32,7 @@ export default async function Navbar() {
               </div>
               <ul tabIndex={0} className="menu dropdown-content menu-sm z-[99999] mt-3 w-52 rounded-box bg-base-100 p-2 shadow">
                 <li>
-                  <Link href="/administracion/mi-perfil" className="justify-between">
+                  <Link href="/mi-perfil" className="justify-between">
                     Perfil
                   </Link>
                 </li>
