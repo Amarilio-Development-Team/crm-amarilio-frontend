@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSidebarStore } from '../../stores/sidebar.store';
 import AMARILIO_LOGO from '@/assets/amarilio.svg';
-import LogoutButton from '@/features/auth/presentation/components/LogoutButton';
+import LogoutButton from '@/features/auth/components/ui/LogoutButton';
 import { MENU_ITEMS } from '../../data/side-menu.data';
 import { MenuItem } from '../../types/side-menu.types';
 import Image from 'next/image';

@@ -1,5 +1,5 @@
-import NewProspectButton from '@/features/product-prospects/presentation/NewProspectButton';
-import RegisterProspectModal from '@/features/product-prospects/presentation/RegisterProspectModal';
+import NewProspectButton from '@/features/prospects/components/create-prospect/NewProspectButton';
+import RegisterProspectModal from '@/features/prospects/components/create-prospect/RegisterProspectModal';
 import React from 'react';
 
 const SalesRepresentativeBoard: React.FC = () => {

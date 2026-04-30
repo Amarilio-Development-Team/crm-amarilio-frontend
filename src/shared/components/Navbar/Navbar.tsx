@@ -2,7 +2,7 @@ import { getSession } from '@/shared/lib/auth';
 import NavbarLogoutButton from './NavbarLogoutButton';
 import ThemeToggle from '@/shared/components/ThemeToggle';
 import Link from 'next/link';
-import GlobalSearchBar from '@/features/global-search/presentation/GlobalSearchBar';
+import GlobalSearchBar from '@/features/global-search/components/GlobalSearchBar';
 import MobileMenuButton from './MobileMenuButton';
 
 export default async function Navbar() {

@@ -1,6 +1,6 @@
 'use client';
 
-import LogoutButton from '../../../features/auth/presentation/components/LogoutButton';
+import LogoutButton from '@/features/auth/components/ui/LogoutButton';
 import React from 'react';
 
 const NavbarLogoutButton: React.FC = () => {
