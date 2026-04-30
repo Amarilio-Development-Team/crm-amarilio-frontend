@@ -23,7 +23,7 @@ export default async function DashboardLayout({
       <SideMenu userRole={'admin'} />
       <PushNotificationManager currentUserId="usuario-123" />
 
-      <div className="main-container-color relative min-h-screen w-full overflow-y-scroll px-6">
+      <div className="main-container-color relative min-h-screen w-full overflow-y-scroll px-6 xl:px-8">
         <Navbar />
 
         <DashboardSWRConfig>{children}</DashboardSWRConfig>
