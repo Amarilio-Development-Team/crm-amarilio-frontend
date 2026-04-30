@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Prospect } from '../domain/product-prospects.types';
+import type { Prospect } from '../types/prospects.types';
 
 interface ProspectWizardState {
   currentStep: number;
